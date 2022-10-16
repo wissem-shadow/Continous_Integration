@@ -27,7 +27,7 @@ import tn.esprit.rh.achat.services.StockServiceImpl;
 
 
 @SpringBootTest
-public class StockServiceImplTest {
+ class StockServiceImplTest {
 
 	@MockBean
 	StockRepository repo;
@@ -37,7 +37,7 @@ public class StockServiceImplTest {
 	
 	
 	@Test
-	public void TestretrieveAllStocks()
+	 void TestretrieveAllStocks()
 	{
 		Stock stock1 = new Stock("TestMock1",10,2);
 		Stock stock2= new Stock("TestMock2",4,1);
@@ -52,7 +52,7 @@ public class StockServiceImplTest {
 		
 	}
 	@Test
-	public void TestretrieveStock()
+	 void TestretrieveStock()
 	{
 		Stock stock1 = new Stock(1L,"TestMock1",10,2);
 		BDDMockito.given(repo.findById(anyLong())).willReturn(Optional.ofNullable(stock1));
@@ -62,7 +62,7 @@ public class StockServiceImplTest {
 	}
 	
 	@Test
-	public void TestaddStock()
+	 void TestaddStock()
 	{
 		Stock stock = new Stock(1L,"addStock",100,50);
 		when(repo.save(stock)).thenReturn(stock);
@@ -70,7 +70,7 @@ public class StockServiceImplTest {
 	}
 	
 	@Test
-	public void TestupdateStock()
+	 void TestupdateStock()
 	{
 		Stock stock = new Stock(1L,"addStock",100,50);
 		when(repo.save(stock)).thenReturn(stock);
@@ -82,7 +82,7 @@ public class StockServiceImplTest {
 	
 	
 	@Test
-	public void TestdeleteStock()
+	 void TestdeleteStock()
 	{
 		Stock stock = new Stock(1L,"addStock",100,50);
 		when(repo.save(stock)).thenReturn(stock);

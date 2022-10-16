@@ -33,8 +33,10 @@ public class CategorieProduitServiceImpl implements ICategorieProduitService {
 
 	@Override
 	public CategorieProduit updateCategorieProduit(CategorieProduit cp) {
-		categorieProduitRepository.save(cp);
-		return cp;
+		CategorieProduit cat = new CategorieProduit();
+		cat.setLibelleCategorie(cp.getLibelleCategorie());
+		cat.setCodeCategorie(cp.getCodeCategorie());
+        return categorieProduitRepository.save(cp);
 	}
 
 	@Override
@@ -42,4 +44,5 @@ public class CategorieProduitServiceImpl implements ICategorieProduitService {
 		return categorieProduitRepository.findById(id).orElse(null);
 	}
 
+	
 }

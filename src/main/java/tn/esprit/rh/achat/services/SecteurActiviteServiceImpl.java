@@ -2,6 +2,7 @@ package tn.esprit.rh.achat.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import tn.esprit.rh.achat.entities.SecteurActivite;
 import tn.esprit.rh.achat.repositories.SecteurActiviteRepository;
 
@@ -31,8 +32,11 @@ public class SecteurActiviteServiceImpl implements ISecteurActiviteService{
 
 	@Override
 	public SecteurActivite updateSecteurActivite(SecteurActivite sa) {
-		secteurActiviteRepository.save(sa);
-		return sa;
+
+		SecteurActivite set = new SecteurActivite();
+		set.setCodeSecteurActivite(sa.getCodeSecteurActivite());
+		set.setLibelleSecteurActivite(sa.getLibelleSecteurActivite());
+        return secteurActiviteRepository.save(sa);
 	}
 
 	@Override
