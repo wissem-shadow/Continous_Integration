@@ -60,7 +60,7 @@ public class ProduitServiceImpl implements IProduitService {
 		log.info("produit :" + produit);
 		return produit;
 	}
-
+/*
 	@Override
 	public void assignProduitToStock(Long idProduit, Long idStock) {
 		Produit produit = produitRepository.findById(idProduit).orElse(null);
@@ -70,6 +70,12 @@ public class ProduitServiceImpl implements IProduitService {
 		produitRepository.save(produit);
 
 	}
-
-
+*/
+	@Override
+	public void assignProduitToStock(Long idProduit, Long idStock) {
+		Produit p = produitRepository.findById(idProduit).orElse(null);
+		p.setStock(stockRepository.findById(idStock).orElse(null));
+		produitRepository.save(p);
+		
+	}
 }
