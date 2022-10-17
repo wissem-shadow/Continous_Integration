@@ -11,6 +11,7 @@ import tn.esprit.rh.achat.repositories.StockRepository;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Slf4j
@@ -61,13 +62,15 @@ public class ProduitServiceImpl implements IProduitService {
 		return produit;
 	}
 	
+	
 	@Override
 	public void assignProduitToStock(Long idProduit, Long idStock) {
-		Produit produit = produitRepository.findById(idProduit).orElse(null);
+	    Optional<Produit> produit = produitRepository.findById(idProduit);
 		Stock stock = stockRepository.findById(idStock).orElse(null);
-		produit.setStock(stock);
-		//produit.getStock();
-		produitRepository.save(produit);
+        if(produit.isPresent()){
+		produit.get().setStock(stock);
+	    produitRepository.save(produit.get());
+}
 
 	}
 }
