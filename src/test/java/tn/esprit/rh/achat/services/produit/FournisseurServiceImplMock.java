@@ -10,7 +10,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
 import tn.esprit.rh.achat.entities.CategorieFournisseur;
 import tn.esprit.rh.achat.entities.Fournisseur;
-import tn.esprit.rh.achat.entities.Stock;
 import tn.esprit.rh.achat.repositories.FournisseurRepository;
 import tn.esprit.rh.achat.services.FournisseurServiceImpl;
 
@@ -28,8 +27,8 @@ public class FournisseurServiceImplMock {
     @InjectMocks
     FournisseurServiceImpl fournisseurService;
     CategorieFournisseur cat = CategorieFournisseur.ORDINAIRE;
-    Fournisseur f= fournisseurService.addFournisseur(Fournisseur.builder().code("192JMT0915").libelle("Wissem_BH").categorieFournisseur(cat).build());
-    List<Fournisseur> listFournisseur = new ArrayList<Fournisseur>() {
+    Fournisseur f=(Fournisseur.builder().code("192JMT0915").libelle("Wissem_BH").categorieFournisseur(cat).build());
+      List<Fournisseur> listFournisseur = new ArrayList<Fournisseur>() {
         {
             add(Fournisseur.builder().code("192JMT0915").libelle("Wissem_BH").categorieFournisseur(cat).build());
             add(Fournisseur.builder().code("100JMT0912").libelle("Chibeni").categorieFournisseur(cat).build());
