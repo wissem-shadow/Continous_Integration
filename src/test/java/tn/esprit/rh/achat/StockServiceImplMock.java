@@ -27,17 +27,17 @@ public class StockServiceImplMock {
     @InjectMocks
     StockServiceImpl Service;
 
-    Stock s= Stock.builder().libelleStock("stock test").qte(100).qteMin(10).build();
+    Stock stock= Stock.builder().libelleStock("stock").qte(100).qteMin(10).build();
     List<Stock> listStocks = new ArrayList<Stock>() {
         {
-            add(Stock.builder().libelleStock("stock test1").qte(100).qteMin(10).build());
-            add(Stock.builder().libelleStock("stock test2").qte(200).qteMin(20).build());
+            add(Stock.builder().libelleStock("first").qte(10).qteMin(5).build());
+            add(Stock.builder().libelleStock("second").qte(200).qteMin(10).build());
         }
     };
 
     @Test
     public void testRetrieveStock() {
-        Mockito.when(Repo.findById(Mockito.anyLong())).thenReturn(Optional.of(s));
+        Mockito.when(Repo.findById(Mockito.anyLong())).thenReturn(Optional.of(stock));
         @SuppressWarnings("removal")
 		Stock s1 = Service.retrieveStock(new Long(2));
         Assertions.assertNotNull(s1);
@@ -52,24 +52,24 @@ public class StockServiceImplMock {
 
     @Test
     public void testAddstock() {
-        Mockito.when(Repo.save(s)).thenReturn(s);
-        Stock s1 = Service.addStock(s);
+        Mockito.when(Repo.save(stock)).thenReturn(stock);
+        Stock s1 = Service.addStock(stock);
         Assertions.assertNotNull(s1);
 
     }
     @Test
     public void testUpdatestock() {
-        s.setQteMin(5);
-        Mockito.when(Repo.save(s)).thenReturn(s);
-        Stock s1 = Service.updateStock(s);
-        Assertions.assertEquals(s,s1);
+    	stock.setQteMin(5);
+        Mockito.when(Repo.save(stock)).thenReturn(stock);
+        Stock s1 = Service.updateStock(stock);
+        Assertions.assertEquals(stock,s1);
 
     }
 
     @Test
     public void testDeletestock() {
-    	Service.deleteStock(s.getIdStock());
-        Mockito.verify(Repo, Mockito.times(1)).deleteById(s.getIdStock());
+    	Service.deleteStock(stock.getIdStock());
+        Mockito.verify(Repo, Mockito.times(1)).deleteById(stock.getIdStock());
     }
     
     /*
