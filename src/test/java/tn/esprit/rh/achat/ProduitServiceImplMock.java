@@ -41,7 +41,7 @@ public class ProduitServiceImplMock {
             add(Produit.builder().codeProduit("789").libelleProduit("banane").build());
         }
     };
-    //
+    
     @Test
     public void RetrieveProduit() {
         Mockito.when(produitRepository.findAll()).thenReturn(listProduits);
