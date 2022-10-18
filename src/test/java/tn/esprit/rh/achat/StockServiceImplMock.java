@@ -57,7 +57,20 @@ public class StockServiceImplMock {
         Assertions.assertNotNull(s1);
 
     }
-    
+    @Test
+    public void testUpdatestock() {
+        s.setQteMin(5);
+        Mockito.when(Repo.save(s)).thenReturn(s);
+        Stock s1 = Service.updateStock(s);
+        Assertions.assertEquals(s,s1);
+
+    }
+
+    @Test
+    public void testDeletestock() {
+    	Service.deleteStock(s.getIdStock());
+        Mockito.verify(Repo, Mockito.times(1)).deleteById(s.getIdStock());
+    }
     
     /*
     @Test
