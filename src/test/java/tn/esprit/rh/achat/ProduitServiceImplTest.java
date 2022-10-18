@@ -6,42 +6,48 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import static org.assertj.core.api.Assertions.assertThat;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.ArgumentMatchers.anyLong;
-import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
-import java.util.ArrayList;
-import java.util.Date;
+import java.text.ParseException;
 import java.util.List;
-import java.util.Optional;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
 import tn.esprit.rh.achat.entities.Produit;
-import tn.esprit.rh.achat.entities.Stock;
-import tn.esprit.rh.achat.repositories.ProduitRepository;
-import tn.esprit.rh.achat.repositories.StockRepository;
 import tn.esprit.rh.achat.services.ProduitServiceImpl;
 
 @SpringBootTest
 @ExtendWith(MockitoExtension.class)
 public class ProduitServiceImplTest {
 
-
-@Mock
-	ProduitRepository produitRepository;
-	@Mock
-	StockRepository stockRepository;
 	
 	
-	@InjectMocks
+	
+	@Autowired
 	ProduitServiceImpl produitService;
 	
 	Produit prod= Produit.builder().codeProduit("123").libelleProduit("lait").build();
 	
- 
+
+	@Test
+	public void testAddStock()  throws ParseException{
+		List<Produit> produits = produitService.retrieveAllProduits();
+		Produit produitADD = Produit.builder().codeProduit("123").libelleProduit("lait").build();
+		int expected = produits.size();
+		Produit savedProduit = produitService.addProduit(produitADD);
+		assertEquals(expected + 1, produitService.retrieveAllProduits().size());
+		
+	}
+
+	@Test
+	public void testdeleteStock() throws ParseException {
+		Produit produitADD = Produit.builder().codeProduit("100").libelleProduit("lait").build();
+		Produit addedProduit = produitService.addProduit(produitADD);
+		produitService.deleteProduit(addedProduit.getIdProduit());
+		assertNull(produitService.retrieveProduit(addedProduit.getIdProduit()));
+
+	}
 	 
 }
