@@ -4,8 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import org.junit.Test;
+
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -28,12 +29,12 @@ public class OperateurServiceMockTest {
 	@InjectMocks
 	OperateurServiceImpl opservice;
 	
-	Operateur operateur = new Operateur((long) 1,"Amine","Chibeni","123");
+	Operateur operateur = new Operateur("Amine","Chibeni","123");
 	
 	List <Operateur> listoperateur = new ArrayList<Operateur>() {
 		{
-			add (new Operateur((long) 2,"Damino","Chibeni","456"));
-			add (new Operateur((long) 3,"Chibeni","Amine","789"));
+			add (new Operateur("Damino","Chibeni","456"));
+			add (new Operateur("Chibeni","Amine","789"));
 		}
 	};
 	
