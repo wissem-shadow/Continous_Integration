@@ -1,6 +1,4 @@
 package tn.esprit.rh.achat.services.produit;
-//git_push_jenkins_trigger
-//
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
