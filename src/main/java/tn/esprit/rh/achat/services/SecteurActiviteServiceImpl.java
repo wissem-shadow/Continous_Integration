@@ -45,4 +45,5 @@ public class SecteurActiviteServiceImpl implements ISecteurActiviteService{
 		return secteurActiviteRepository.findById(id).orElse(null);
 	}
 
+
 }
