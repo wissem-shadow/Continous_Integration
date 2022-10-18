@@ -1,22 +1,20 @@
 package tn.esprit.rh.achat;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.assertNotNull;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
-import org.aspectj.lang.annotation.Before;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.mockito.junit.MockitoJUnitRunner;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
-import org.springframework.test.context.junit4.SpringRunner;
-
 import tn.esprit.rh.achat.entities.Facture;
 import tn.esprit.rh.achat.repositories.FactureRepository;
 import tn.esprit.rh.achat.services.FactureServiceImpl;
@@ -42,12 +40,29 @@ public class FactureServiceImplTest {
     @Test
     @Rollback(false)
     public void testAddFacture() {
-        Facture addFacture = repo.save(new Facture(null, 1542, 0, null, null, null, null, null, null));
-        assertThat(addFacture.getIdFacture()).isPositive();
+        Facture addFacture = repo.save(new Facture(1L, 1542, 0, null, null, null, null, null, null));
+        factureService.addFacture(addFacture);
+        assertEquals(addFacture, factureService.addFacture(addFacture));
     }
     
-    
-    
-    
-    
+    @Test
+    public void getAllFacturesTest()
+    {
+        List<Facture> list = new ArrayList<Facture>();
+        Facture fac1 = new Facture(3L, 1000, 0, null, null, null, null, null, null);
+        Facture fac2 = new Facture(4L, 1001, 0, null, null, null, null, null, null);
+       
+
+        list.add(fac1);
+        list.add(fac2);
+
+        when(repo.findAll()).thenReturn(list);
+
+        //test
+        List<Facture> facList = factureService.retrieveAllFactures();
+
+        assertEquals(2, facList.size());
+        verify(repo, times(1)).findAll();
+    }
+     
 }
