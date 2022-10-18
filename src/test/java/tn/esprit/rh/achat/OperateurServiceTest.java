@@ -6,6 +6,7 @@ import java.util.List;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -22,6 +23,7 @@ public class OperateurServiceTest {
 	IOperateurService operateurservice;
 	
 	@Test
+	@Order(1)
 	public void TestRetrieveOperateur () {
 		List <Operateur> ListOperateurs = operateurservice.retrieveAllOperateurs();
 		Assertions.assertEquals(0,ListOperateurs.size());
