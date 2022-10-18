@@ -24,9 +24,6 @@ public class ProduitServiceImpl implements IProduitService {
 	@Autowired
 	CategorieProduitRepository categorieProduitRepository;
 
-	public ProduitServiceImpl(ProduitRepository produitRepository2) {
-		// TODO Auto-generated constructor stub
-	}
 
 	@Override
 	public List<Produit> retrieveAllProduits() {
