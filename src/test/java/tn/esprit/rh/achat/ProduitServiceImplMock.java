@@ -35,7 +35,6 @@ public class ProduitServiceImplMock {
 	ProduitServiceImpl produitService;
 	
 	Produit prod= Produit.builder().idProduit(1L).codeProduit("123").libelleProduit("lait").build();
-	//////
     List<Produit> listProduits= new ArrayList<Produit>() {
         {
             add(Produit.builder().codeProduit("456").libelleProduit("pomme").build());
