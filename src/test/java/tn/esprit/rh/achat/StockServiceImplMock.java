@@ -20,7 +20,7 @@ import java.util.Optional;
 
 @SpringBootTest
 @ExtendWith(MockitoExtension.class)
-public class Testmock {
+public class StockServiceImplMock {
     @Mock
     StockRepository Repo;
 
@@ -38,7 +38,8 @@ public class Testmock {
     @Test
     public void testRetrieveStock() {
         Mockito.when(Repo.findById(Mockito.anyLong())).thenReturn(Optional.of(s));
-        Stock s1 = Service.retrieveStock(new Long(2));
+        @SuppressWarnings("removal")
+		Stock s1 = Service.retrieveStock(new Long(2));
         Assertions.assertNotNull(s1);
     }
 
