@@ -31,7 +31,7 @@ import tn.esprit.rh.achat.services.StockServiceImpl;
 
 @SpringBootTest
  class StockServiceImplTest {
-
+/*
 	@MockBean
 	StockRepository repo;
 	
@@ -105,7 +105,7 @@ import tn.esprit.rh.achat.services.StockServiceImpl;
 
 	
 	
-	
+	*/
 	
 	
 	
