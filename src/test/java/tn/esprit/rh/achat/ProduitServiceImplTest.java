@@ -10,12 +10,17 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 
 import java.text.ParseException;
 import java.util.List;
+
+import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
+
 import tn.esprit.rh.achat.entities.Produit;
 import tn.esprit.rh.achat.services.ProduitServiceImpl;
 
 @SpringBootTest
-@ExtendWith(MockitoExtension.class)
+@TestMethodOrder(OrderAnnotation.class)
 public class ProduitServiceImplTest {
 
 	
@@ -28,6 +33,7 @@ public class ProduitServiceImplTest {
 	
 
 	@Test
+	@Order(1)
 	public void testAddStock()  throws ParseException{
 		List<Produit> produits = produitService.retrieveAllProduits();
 		Produit produitADD = Produit.builder().codeProduit("123").libelleProduit("lait").build();
@@ -38,6 +44,7 @@ public class ProduitServiceImplTest {
 	}
 
 	@Test
+	@Order(2)
 	public void testdeleteStock() throws ParseException {
 		Produit produitADD = Produit.builder().codeProduit("100").libelleProduit("lait").build();
 		Produit addedProduit = produitService.addProduit(produitADD);
