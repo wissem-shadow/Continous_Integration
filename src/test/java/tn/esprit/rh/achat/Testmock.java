@@ -58,7 +58,7 @@ public class Testmock {
     }
     
     
-    
+    /*
     @Test
 	 public void TestupdateStock()
 	{
@@ -68,7 +68,7 @@ public class Testmock {
 		s.setQte(90);
 		assertEquals(s, Service.updateStock(s));
 	}
-    
+    */
     /*
     @Test
 	public void whenGivenId_shouldDeletestock_ifFound()
