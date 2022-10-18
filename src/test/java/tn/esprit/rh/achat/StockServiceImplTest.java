@@ -2,6 +2,8 @@ package tn.esprit.rh.achat;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.times;
@@ -15,6 +17,7 @@ import java.util.Optional;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.BDDMockito;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -37,7 +40,7 @@ import tn.esprit.rh.achat.services.StockServiceImpl;
 	
 	
 	@Test
-	 void TestretrieveAllStocks()
+	 public void TestretrieveAllStocks()
 	{
 		Stock stock1 = new Stock("TestMock1",10,2);
 		Stock stock2= new Stock("TestMock2",4,1);
@@ -52,17 +55,16 @@ import tn.esprit.rh.achat.services.StockServiceImpl;
 		
 	}
 	@Test
-	 void TestretrieveStock()
+	 public void TestretrieveStock()
 	{
 		Stock stock1 = new Stock(1L,"TestMock1",10,2);
 		BDDMockito.given(repo.findById(anyLong())).willReturn(Optional.ofNullable(stock1));
 		Stock result = srvce.retrieveStock(1L);
-		assertThat(result.getLibelleStock())
-.containsIgnoringCase("TestMock"); 	 	
+		assertThat(result.getLibelleStock()).containsIgnoringCase("TestMock"); 	 	
 	}
 	
 	@Test
-	 void TestaddStock()
+	 public void TestaddStock()
 	{
 		Stock stock = new Stock(1L,"addStock",100,50);
 		when(repo.save(stock)).thenReturn(stock);
@@ -70,7 +72,7 @@ import tn.esprit.rh.achat.services.StockServiceImpl;
 	}
 	
 	@Test
-	 void TestupdateStock()
+	 public void TestupdateStock()
 	{
 		Stock stock = new Stock(1L,"addStock",100,50);
 		when(repo.save(stock)).thenReturn(stock);
@@ -81,15 +83,27 @@ import tn.esprit.rh.achat.services.StockServiceImpl;
 	
 	
 	
-	/*@Test
-	 void TestdeleteStock()
+	@Test
+	public void TestretrieveStatusStock ()
 	{
-		Stock stock = new Stock(1L,"addStock",100,50);
-		when(repo.save(stock)).thenReturn(stock);
-		srvce.deleteStock(stock.getIdStock());
-		verify(repo,times(1)).delete(stock);
+		
 	}
-	*/
+	
+	@Test
+	public void whenGivenId_shouldDeletestock_ifFound()
+	{
+		Stock st = new Stock();
+		st.setLibelleStock("test");
+		st.setIdStock(1L);
+		when(repo.findById(st.getIdStock())).thenReturn(Optional.of(st));
+		srvce.deleteStock(st.getIdStock());
+		verify(repo).deleteById(st.getIdStock());
+	}
+	
+	
+	
+
+	
 	
 	
 	
