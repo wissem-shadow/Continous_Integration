@@ -1,6 +1,7 @@
 package tn.esprit.rh.achat;
 
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -8,6 +9,7 @@ import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.Test;
 import org.mockito.InjectMocks;
@@ -65,4 +67,29 @@ public class FactureServiceImplTest {
         verify(repo, times(1)).findAll();
     }
      
+    @Test
+    public void cancelFactureTest(){
+        Facture fac = new Facture();
+        fac.setIdFacture(1L);
+
+        when(repo.findById(fac.getIdFacture())).thenReturn(Optional.of(fac));
+
+        factureService.cancelFacture(fac.getIdFacture());
+        verify(repo).deleteById(fac.getIdFacture());
+        
+    }
+    
+    @Test
+    public void retrieveFactureByIdTest() {
+        Facture fac = new Facture();
+        fac.setIdFacture(3L);
+
+        when(repo.findById(fac.getIdFacture())).thenReturn(Optional.of(fac));
+
+        Facture expected = factureService.retrieveFacture(fac.getIdFacture());
+
+        assertThat(expected).isSameAs(fac);
+        verify(repo).findById(fac.getIdFacture());
+    }
+
 }
