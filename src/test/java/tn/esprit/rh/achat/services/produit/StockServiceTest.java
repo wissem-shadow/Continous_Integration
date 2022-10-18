@@ -1,4 +1,4 @@
-/*package tn.esprit.rh.achat.services.produit;
+package tn.esprit.rh.achat.services.produit;
 
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,4 +55,3 @@ public class StockServiceTest {
 
     }
 }
-*/
