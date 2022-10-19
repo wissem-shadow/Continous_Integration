@@ -68,7 +68,7 @@ public class FactureServiceImplTest {
         verify(repo, times(1)).findAll();
     }
      
-    @Test
+    /*@Test
     public void cancelFactureTest(){
         Facture fac = new Facture();
         fac.setIdFacture(1L);
@@ -77,7 +77,7 @@ public class FactureServiceImplTest {
 
         factureService.cancelFacture(fac.getIdFacture());
         verify(repo).deleteById(fac.getIdFacture());   
-    }
+    }*/
     
     @Test
     public void retrieveFactureByIdTest() {
