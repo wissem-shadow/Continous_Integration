@@ -43,14 +43,14 @@ public class ProduitServiceImplMock {
     };
     
     @Test
-    public void RetrieveProduit() {
+     void RetrieveProduit() {
         Mockito.when(produitRepository.findAll()).thenReturn(listProduits);
         List<Produit> lProduit = produitService.retrieveAllProduits();
         Assertions.assertNotNull(lProduit);
     }
     
     @Test
-    public void RetrieveByIdProduit() {
+     void RetrieveByIdProduit() {
   
     	BDDMockito.given(produitRepository.findById(anyLong())).willReturn(Optional.ofNullable(prod));
 
@@ -61,7 +61,7 @@ public class ProduitServiceImplMock {
 
    
     @Test
-    public void testAddProduit() {
+     void testAddProduit() {
         Mockito.when(produitRepository.save(prod)).thenReturn(prod);
         Produit produit1 = produitService.addProduit(prod);
         assertEquals(1L,produit1.getIdProduit());
@@ -70,7 +70,7 @@ public class ProduitServiceImplMock {
 
     
     @Test
-    public void testUpdateProduit(){
+     void testUpdateProduit(){
     	Produit input = new Produit(1L, "riadh", "velo", 100, new Date(), new Date(), null, null, null);
 
         Mockito.when(produitRepository.save(input)).thenReturn(input);
@@ -83,7 +83,7 @@ public class ProduitServiceImplMock {
     
     
     @Test
-    public void DeleteProduit(){
+     void DeleteProduit(){
     	Produit input = new Produit(1L, "riadh", "velo", 100, new Date(), new Date(), null, null, null);
 
       

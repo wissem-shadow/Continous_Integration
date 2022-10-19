@@ -9,6 +9,7 @@ import tn.esprit.rh.achat.repositories.*;
 import javax.transaction.Transactional;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -31,7 +32,7 @@ public class FactureServiceImpl implements IFactureService {
 	
 	@Override
 	public List<Facture> retrieveAllFactures() {
-		List<Facture> factures = (List<Facture>) factureRepository.findAll();
+		List<Facture> factures = factureRepository.findAll();
 		for (Facture facture : factures) {
 			log.info(" facture : " + facture);
 		}
@@ -51,7 +52,7 @@ public class FactureServiceImpl implements IFactureService {
 		for (DetailFacture detail : detailsFacture) {
 		
 			Produit produit = produitRepository.findById(detail.getProduit().getIdProduit()).get();
-			
+			 
 			float prixTotalDetail = detail.getQteCommandee() * produit.getPrix();
 						float montantRemiseDetail = (prixTotalDetail * detail.getPourcentageRemise()) / 100;
 			float prixTotalDetailRemise = prixTotalDetail - montantRemiseDetail;
@@ -62,10 +63,12 @@ public class FactureServiceImpl implements IFactureService {
 		
 			montantRemise = montantRemise + montantRemiseDetail;
 			detailFactureRepository.save(detail);
+		
 		}
 		f.setMontantFacture(montantFacture);
 		f.setMontantRemise(montantRemise);
 		return f;
+		
 	}
 
 	@Override
@@ -89,24 +92,26 @@ public class FactureServiceImpl implements IFactureService {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Facture> getFacturesByFournisseur(Long idFournisseur) {
-		Fournisseur fournisseur = fournisseurRepository.findById(idFournisseur).orElse(null);
-		return (List<Facture>) fournisseur.getFactures();
+		Optional<Fournisseur> fournisseur = fournisseurRepository.findById(idFournisseur);
+		return (List<Facture>) fournisseur.get().getFactures();
 	}
 
 	@Override
 	public void assignOperateurToFacture(Long idOperateur, Long idFacture) {
 		Facture facture = factureRepository.findById(idFacture).orElse(null);
-		Operateur operateur = operateurRepository.findById(idOperateur).orElse(null);
-		operateur.getFactures().add(facture);
-		operateurRepository.save(operateur);
+		 Optional<Operateur> operateur = operateurRepository.findById(idOperateur);
+		 if(operateur.isPresent()){
+		operateur.get().getFactures().add(facture);
+		operateurRepository.save(operateur.get());
+		 }
 	}
 
 	@Override
 	public float pourcentageRecouvrement(Date startDate, Date endDate) {
 		float totalFacturesEntreDeuxDates = factureRepository.getTotalFacturesEntreDeuxDates(startDate,endDate);
 		float totalRecouvrementEntreDeuxDates =reglementService.getChiffreAffaireEntreDeuxDate(startDate,endDate);
-		float pourcentage=(totalRecouvrementEntreDeuxDates/totalFacturesEntreDeuxDates)*100;
-		return pourcentage;
+	return totalRecouvrementEntreDeuxDates/totalFacturesEntreDeuxDates *100;
+		
 	}
 	
 
