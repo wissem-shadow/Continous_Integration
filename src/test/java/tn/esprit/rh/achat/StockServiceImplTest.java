@@ -1,4 +1,4 @@
-
+/*
 package tn.esprit.rh.achat;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -108,4 +108,4 @@ import tn.esprit.rh.achat.services.StockServiceImpl;
 	
 
 }
-
+*/
