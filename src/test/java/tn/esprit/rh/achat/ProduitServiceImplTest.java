@@ -1,4 +1,4 @@
-/* package tn.esprit.rh.achat;
+package tn.esprit.rh.achat;
 
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -55,4 +55,3 @@ public class ProduitServiceImplTest {
 	 
 }
 
-*/
