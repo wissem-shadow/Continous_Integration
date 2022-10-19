@@ -45,31 +45,6 @@ public class FactureServiceImpl implements IFactureService {
 	}
 
 
-	private Facture addDetailsFacture(Facture f, Set<DetailFacture> detailsFacture) {
-		float montantFacture = 0;
-		float montantRemise = 0;
-		for (DetailFacture detail : detailsFacture) {
-		
-			Produit produit = Optional.ofNullable(produitRepository.findById(detail.getProduit().getIdProduit()).get()).orElse(null);
-			
-			float prixTotalDetail = detail.getQteCommandee() * produit.getPrix();
-						float montantRemiseDetail = (prixTotalDetail * detail.getPourcentageRemise()) / 100;
-			float prixTotalDetailRemise = prixTotalDetail - montantRemiseDetail;
-			detail.setMontantRemise(montantRemiseDetail);
-			detail.setPrixTotalDetail(prixTotalDetailRemise);
-		
-			montantFacture = montantFacture + prixTotalDetailRemise;
-		
-			montantRemise = montantRemise + montantRemiseDetail;
-			detailFactureRepository.save(detail);
-		
-		}
-		f.setMontantFacture(montantFacture);
-		f.setMontantRemise(montantRemise);
-		
-		return f;
-	}
-
 	@Override
 	public void cancelFacture(Long factureId) {
 	
@@ -92,10 +67,11 @@ public class FactureServiceImpl implements IFactureService {
 	@Override
 	public List<Facture> getFacturesByFournisseur(Long idFournisseur) {
 		Optional<Fournisseur> fournisseur = fournisseurRepository.findById(idFournisseur);
-		
+		if(fournisseur.isPresent()) {
 		return (List<Facture>) fournisseur.get().getFactures();
 	}
-
+		return null;
+	}
 	@Override
 	public void assignOperateurToFacture(Long idOperateur, Long idFacture) {
 		Facture facture = factureRepository.findById(idFacture).orElse(null);
