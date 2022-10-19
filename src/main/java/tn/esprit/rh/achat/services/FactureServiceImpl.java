@@ -9,7 +9,6 @@ import tn.esprit.rh.achat.repositories.*;
 import javax.transaction.Transactional;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 @Service
 @Slf4j
@@ -70,17 +69,17 @@ public class FactureServiceImpl implements IFactureService {
 	@Override
 	public void assignOperateurToFacture(Long idOperateur, Long idFacture) {
 		Facture facture = factureRepository.findById(idFacture).orElse(null);
-		Operateur operateur = operateurRepository.findById(idOperateur).orElse(null);
-		operateur.getFactures().add(facture);
-		operateurRepository.save(operateur);
+		Operateur op = operateurRepository.findById(idOperateur).orElse(null);
+		op.getFactures().add(facture);
+		operateurRepository.save(op);
 	}
 
 	@Override
 	public float pourcentageRecouvrement(Date startDate, Date endDate) {
 		float totalFacturesEntreDeuxDates = factureRepository.getTotalFacturesEntreDeuxDates(startDate,endDate);
 		float totalRecouvrementEntreDeuxDates =reglementService.getChiffreAffaireEntreDeuxDate(startDate,endDate);
-		float pourcentage=(totalRecouvrementEntreDeuxDates/totalFacturesEntreDeuxDates)*100;
-		return pourcentage;
+		return (totalRecouvrementEntreDeuxDates/totalFacturesEntreDeuxDates)*100;
+		
 	}
 	
 

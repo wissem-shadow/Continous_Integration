@@ -23,8 +23,7 @@ public class FactureRestController {
     @GetMapping("/retrieve-all-factures")
     @ResponseBody
     public List<Facture> getFactures() {
-        List<Facture> list = factureService.retrieveAllFactures();
-        return list;
+        return factureService.retrieveAllFactures();
     }
 
     @GetMapping("/retrieve-facture/{facture-id}")
@@ -36,8 +35,7 @@ public class FactureRestController {
     @PostMapping("/add-facture")
     @ResponseBody
     public Facture addFacture(@RequestBody Facture f) {
-        Facture facture = factureService.addFacture(f);
-        return facture;
+        return factureService.addFacture(f);
     }
 
     

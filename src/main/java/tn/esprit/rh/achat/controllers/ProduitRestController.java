@@ -22,8 +22,7 @@ public class ProduitRestController {
 	@GetMapping("/retrieve-all-produits")
 	@ResponseBody
 	public List<Produit> getProduits() {
-		List<Produit> list = produitService.retrieveAllProduits();
-		return list;
+	    return produitService.retrieveAllProduits();
 	}
 
 	@GetMapping("/retrieve-produit/{produit-id}")
@@ -35,8 +34,8 @@ public class ProduitRestController {
 	@PostMapping("/add-produit")
 	@ResponseBody
 	public Produit addProduit(@RequestBody Produit p) {
-		Produit produit = produitService.addProduit(p);
-		return produit;
+	    return produitService.addProduit(p);
+		
 	}
 
 	@DeleteMapping("/remove-produit/{produit-id}")
