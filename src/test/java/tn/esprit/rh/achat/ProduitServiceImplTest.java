@@ -1,7 +1,6 @@
-package tn.esprit.rh.achat;
+/*package tn.esprit.rh.achat;
 
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.junit.jupiter.MockitoExtension;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -21,7 +20,7 @@ import tn.esprit.rh.achat.services.ProduitServiceImpl;
 
 @SpringBootTest
 @TestMethodOrder(OrderAnnotation.class)
-public class ProduitServiceImplTest {
+ class ProduitServiceImplTest {
 
 	
 	
@@ -55,3 +54,4 @@ public class ProduitServiceImplTest {
 	 
 }
 
+*/

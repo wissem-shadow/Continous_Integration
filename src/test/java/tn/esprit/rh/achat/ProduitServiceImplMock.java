@@ -67,22 +67,7 @@ public class ProduitServiceImplMock {
         assertEquals(1L,produit1.getIdProduit());
             }
         
- /*
-    @Test
-    public void testUpdateProduit(){
-    	Produit input = new Produit(1L, "riadh", "velo", 100, new Date(), new Date(), null, null, null);
 
-    	Produit returned = new Produit(1L, "Ali", "velo", 100, new Date(), new Date(), null, null, null);
-
-       
-        Mockito.when(produitRepository.getById(1L)).thenReturn(input);
-        Mockito.when(produitRepository.save(input)).thenReturn(returned);
-   
-        Produit result = produitService.updateProduit(input);
-
-        assertEquals("Ali", result.getCodeProduit());
-    }
-*/
     
     @Test
     public void testUpdateProduit(){
