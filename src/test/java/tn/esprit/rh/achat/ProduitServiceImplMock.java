@@ -26,7 +26,7 @@ import tn.esprit.rh.achat.repositories.ProduitRepository;
 import tn.esprit.rh.achat.services.ProduitServiceImpl;
 
 @SpringBootTest
-public class ProduitServiceImplMock {
+ class ProduitServiceImplMock {
 
 	
 	@MockBean
@@ -83,12 +83,12 @@ public class ProduitServiceImplMock {
     
     
     @Test
+    
      void DeleteProduit(){
-    	Produit input = new Produit(1L, "riadh", "velo", 100, new Date(), new Date(), null, null, null);
 
       
-        Mockito.when(produitRepository.getById(1L)).thenReturn(input);
-        doNothing().when(produitRepository).delete(input);
+        Mockito.when(produitRepository.getById(1L)).thenReturn(prod);
+        doNothing().when(produitRepository).delete(prod);
 
         produitService.deleteProduit(1L);
     }
