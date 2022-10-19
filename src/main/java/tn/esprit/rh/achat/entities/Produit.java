@@ -44,8 +44,6 @@ public class Produit implements Serializable {
 	@OneToMany(mappedBy = "produit")
 	@JsonIgnore
 	private Set<DetailFacture> detailFacture;
-	@ManyToOne
-	@JsonIgnore
 	private CategorieProduit categorieProduit;
 	
 

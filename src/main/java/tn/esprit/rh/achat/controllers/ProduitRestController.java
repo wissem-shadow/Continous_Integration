@@ -37,6 +37,7 @@ public class ProduitRestController {
 	@PostMapping("/add-produit")
 	@ResponseBody
 	public Produit addProduit(@RequestBody Produit p) {
+		Produit p1 = new Produit();
 		return produitService.addProduit(p);
 	
 	}
