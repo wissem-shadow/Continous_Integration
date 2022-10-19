@@ -22,7 +22,7 @@ public class StockServiceImpl implements IStockService {
 	public List<Stock> retrieveAllStocks() {
 		
 		log.info("In method retrieveAllStocks");
-		List<Stock> stocks = (List<Stock>) stockRepository.findAll();
+		List<Stock> stocks = stockRepository.findAll();
 		for (Stock stock : stocks) {
 			log.info(" Stock : " + stock);
 		}
