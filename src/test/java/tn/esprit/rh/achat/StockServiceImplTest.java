@@ -1,4 +1,4 @@
-/*
+
 package tn.esprit.rh.achat;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -41,7 +41,7 @@ import tn.esprit.rh.achat.services.StockServiceImpl;
 	
 	
 	@Test
-	 public void TestretrieveAllStocks()
+	  void TestretrieveAllStocks()
 	{
 		Stock stock1 = new Stock("TestMock1",10,2);
 		Stock stock2= new Stock("TestMock2",4,1);
@@ -56,7 +56,7 @@ import tn.esprit.rh.achat.services.StockServiceImpl;
 		
 	}
 	@Test
-	 public void TestretrieveStock()
+	  void TestretrieveStock()
 	{
 		Stock stock1 = new Stock(1L,"TestMock1",10,2);
 		BDDMockito.given(repo.findById(anyLong())).willReturn(Optional.ofNullable(stock1));
@@ -65,7 +65,7 @@ import tn.esprit.rh.achat.services.StockServiceImpl;
 	}
 	
 	@Test
-	 public void TestaddStock()
+	  void TestaddStock()
 	{
 		Stock stock = new Stock(1L,"addStock",100,50);
 		when(repo.save(stock)).thenReturn(stock);
@@ -73,7 +73,7 @@ import tn.esprit.rh.achat.services.StockServiceImpl;
 	}
 	
 	@Test
-	 public void TestupdateStock()
+	  void TestupdateStock()
 	{
 		Stock stock = new Stock(1L,"addStock",100,50);
 		when(repo.save(stock)).thenReturn(stock);
@@ -84,14 +84,10 @@ import tn.esprit.rh.achat.services.StockServiceImpl;
 	
 	
 	
-	@Test
-	public void TestretrieveStatusStock ()
-	{
-		
-	}
+	
 	
 	@Test
-	public void whenGivenId_shouldDeletestock_ifFound()
+	 void whenGivenId_shouldDeletestock_ifFound()
 	{
 		Stock st = new Stock();
 		st.setLibelleStock("test");
@@ -112,4 +108,4 @@ import tn.esprit.rh.achat.services.StockServiceImpl;
 	
 
 }
-*/
+

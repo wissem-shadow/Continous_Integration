@@ -20,7 +20,7 @@ import java.util.Optional;
 
 @SpringBootTest
 @ExtendWith(MockitoExtension.class)
-public class StockServiceImplMock {
+ class StockServiceImplMock {
     @Mock
     StockRepository Repo;
 
@@ -36,7 +36,7 @@ public class StockServiceImplMock {
     };
 
     @Test
-    public void testRetrieveStock() {
+     void testRetrieveStock() {
         Mockito.when(Repo.findById(Mockito.anyLong())).thenReturn(Optional.of(stock));
         @SuppressWarnings("removal")
 		Stock s1 = Service.retrieveStock(new Long(2));
@@ -44,21 +44,21 @@ public class StockServiceImplMock {
     }
 
     @Test
-    public void testAllRetrieveStock() {
+     void testAllRetrieveStock() {
         Mockito.when(Repo.findAll()).thenReturn(listStocks);
         List<Stock> lStocks = Service.retrieveAllStocks();
         Assertions.assertNotNull(lStocks);
     }
 
     @Test
-    public void testAddstock() {
+     void testAddstock() {
         Mockito.when(Repo.save(stock)).thenReturn(stock);
         Stock s1 = Service.addStock(stock);
         Assertions.assertNotNull(s1);
 
     }
     @Test
-    public void testUpdatestock() {
+     void testUpdatestock() {
     	stock.setQteMin(5);
         Mockito.when(Repo.save(stock)).thenReturn(stock);
         Stock s1 = Service.updateStock(stock);
@@ -67,32 +67,11 @@ public class StockServiceImplMock {
     }
 
     @Test
-    public void testDeletestock() {
+     void testDeletestock() {
     	Service.deleteStock(stock.getIdStock());
         Mockito.verify(Repo, Mockito.times(1)).deleteById(stock.getIdStock());
     }
-    
-    /*
-    @Test
-	 public void TestupdateStock()
-	{
-		//Stock stock = new Stock(1L,"addStock",100,50);
-		Mockito.when(Repo.save(s)).thenReturn(s);
-		s.setLibelleStock("updatestok");
-		s.setQte(90);
-		assertEquals(s, Service.updateStock(s));
-	}
-    */
-    /*
-    @Test
-	public void whenGivenId_shouldDeletestock_ifFound()
-	{
-		Mockito.when(Repo.findById(s.getIdStock())).thenReturn(Optional.of(s));
-		Service.deleteStock(s.getIdStock());
-		verify(Repo).deleteById(s.getIdStock());
-	}*/
-    
-    
+ 
     
 
     

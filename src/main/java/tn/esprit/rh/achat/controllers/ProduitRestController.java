@@ -3,6 +3,8 @@ package tn.esprit.rh.achat.controllers;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import tn.esprit.rh.achat.Dto.DTOProduit;
 import tn.esprit.rh.achat.entities.Produit;
 import tn.esprit.rh.achat.services.IProduitService;
 
@@ -32,8 +34,9 @@ public class ProduitRestController {
 
 	@PostMapping("/add-produit")
 	@ResponseBody
-	public Produit addProduit(@RequestBody Produit p) {
-		return produitService.addProduit(p);
+	public Produit addProduit(@RequestBody DTOProduit p) {
+		Produit pt = new Produit(p.getCodeProduit(),p.getLibelleProduit(),p.getPrix());
+		return produitService.addProduit(pt);
 	}
 
 	@DeleteMapping("/remove-produit/{produit-id}")
@@ -44,8 +47,9 @@ public class ProduitRestController {
 
 	@PutMapping("/modify-produit")
 	@ResponseBody
-	public Produit modifyProduit(@RequestBody Produit p) {
-		return produitService.updateProduit(p);
+	public Produit modifyProduit(@RequestBody DTOProduit p) {
+		Produit pt = new Produit(p.getCodeProduit(),p.getLibelleProduit(),p.getPrix());
+		return produitService.updateProduit(pt);
 	}
 
 	@PutMapping(value = "/assignProduitToStock/{idProduit}/{idStock}")

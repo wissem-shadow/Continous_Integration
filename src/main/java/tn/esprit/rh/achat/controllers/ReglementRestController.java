@@ -4,6 +4,8 @@ import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
+
+import tn.esprit.rh.achat.Dto.DTOReglement;
 import tn.esprit.rh.achat.entities.Reglement;
 import tn.esprit.rh.achat.services.IReglementService;
 
@@ -22,9 +24,10 @@ public class ReglementRestController {
 
     @PostMapping("/add-reglement")
     @ResponseBody
-    public Reglement addReglement(@RequestBody Reglement r) {
-        return reglementService.addReglement(r);
-    }
+    public Reglement addReglement(@RequestBody DTOReglement r) {
+    	Reglement reglement = new Reglement(r.getMontantPaye(),r.getMontantRestant(),r.getPayee());
+		return reglementService.addReglement(reglement);
+	}
     @GetMapping("/retrieve-all-reglements")
     @ResponseBody
     public List<Reglement> getReglement() {

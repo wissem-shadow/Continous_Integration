@@ -4,6 +4,8 @@ import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
+
+import tn.esprit.rh.achat.Dto.DTOFacture;
 import tn.esprit.rh.achat.entities.Facture;
 import tn.esprit.rh.achat.services.IFactureService;
 
@@ -36,10 +38,11 @@ public class FactureRestController {
     
     @PostMapping("/add-facture")
     @ResponseBody
-    public Facture addFacture(@RequestBody Facture f) {
-        
-        return factureService.addFacture(f);
-    }
+    public Facture addFacture(@RequestBody DTOFacture f) {
+    	Facture fact = new Facture(f.getIdFacture(),f.getMontantRemise(),f.getMontantFacture(),f.getDateCreationFacture()
+    			,f.getDateDerniereModificationFacture(),f.getArchivee(),f.getDetailsFacture(),f.getFournisseur(),f.getReglements());
+		return factureService.addFacture(fact);
+	}
 
     @PutMapping("/cancel-facture/{facture-id}")
     @ResponseBody

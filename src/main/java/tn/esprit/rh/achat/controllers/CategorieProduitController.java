@@ -3,6 +3,8 @@ package tn.esprit.rh.achat.controllers;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import tn.esprit.rh.achat.Dto.DTOCategorieProduit;
 import tn.esprit.rh.achat.entities.CategorieProduit;
 import tn.esprit.rh.achat.services.ICategorieProduitService;
 
@@ -33,8 +35,9 @@ public class CategorieProduitController {
 	
 	@PostMapping("/add-categorieProduit")
 	@ResponseBody
-	public CategorieProduit addCategorieProduit(@RequestBody CategorieProduit cp) {
-		return categorieProduitService.addCategorieProduit(cp);
+	public CategorieProduit addCategorieProduit(@RequestBody DTOCategorieProduit cp) {
+		CategorieProduit catprod = new CategorieProduit(cp.getCodeCategorie(),cp.getLibelleCategorie());
+		return categorieProduitService.addCategorieProduit(catprod);
 	}
 
 	
@@ -47,8 +50,9 @@ public class CategorieProduitController {
 	
 	@PutMapping("/modify-categorieProduit")
 	@ResponseBody
-	public CategorieProduit modifyCategorieProduit(@RequestBody CategorieProduit categorieProduit) {
-		return categorieProduitService.updateCategorieProduit(categorieProduit);
+	public CategorieProduit modifyCategorieProduit(@RequestBody DTOCategorieProduit s) {
+		CategorieProduit catprod = new CategorieProduit(s.getIdCategorieProduit(),s.getLibelleCategorie(),s.getCodeCategorie(),s.getProduits());
+		return categorieProduitService.updateCategorieProduit(catprod);
 	}
 	
 	
