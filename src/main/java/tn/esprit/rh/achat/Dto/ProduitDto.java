@@ -11,7 +11,7 @@ import tn.esprit.rh.achat.entities.DetailFacture;
 import tn.esprit.rh.achat.entities.Stock;
 
 @Data
-@Builder
+
 public class ProduitDto {
 	
 	private Long idProduit;
@@ -28,6 +28,13 @@ public class ProduitDto {
 	private Set<DetailFacture> detailFacture;
 
 	private CategorieProduit categorieProduit;
+
+	public ProduitDto(String codeProduit, String libelleProduit, float prix) {
+		super();
+		this.codeProduit = codeProduit;
+		this.libelleProduit = libelleProduit;
+		this.prix = prix;
+	}
 	
 	
 	

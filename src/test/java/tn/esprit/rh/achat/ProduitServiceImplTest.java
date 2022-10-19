@@ -22,9 +22,6 @@ import tn.esprit.rh.achat.services.ProduitServiceImpl;
 @TestMethodOrder(OrderAnnotation.class)
  class ProduitServiceImplTest {
 
-	
-	
-	
 	@Autowired
 	ProduitServiceImpl produitService;
 	
@@ -38,8 +35,7 @@ import tn.esprit.rh.achat.services.ProduitServiceImpl;
 		Produit produitADD = Produit.builder().codeProduit("123").libelleProduit("lait").build();
 		int expected = produits.size();
 		Produit savedProduit = produitService.addProduit(produitADD);
-		assertEquals(expected + 1, produitService.retrieveAllProduits().size());
-		
+		assertEquals(expected + 1, produitService.retrieveAllProduits().size());		
 	}
 
 	@Test
