@@ -59,7 +59,7 @@ public class ProduitRestController {
 	
 	@PutMapping("/modify-produit")
 	@ResponseBody
-	public Produit modifyProduit(@RequestBody Produit p) {
+	public Produit modifyProduit(@RequestBody ProduitDto p) {
 		Produit dt = new Produit(p.getCodeProduit(),p.getLibelleProduit(),p.getPrix());
 		
 		return produitService.updateProduit(dt);
