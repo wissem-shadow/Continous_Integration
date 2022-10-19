@@ -14,6 +14,7 @@ import java.util.Optional;
 import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
@@ -58,7 +59,7 @@ public class FactureServiceImplTest {
         list.add(fac1);
         list.add(fac2);
 
-        when(repo.findAll()).thenReturn(list);
+        Mockito.when(repo.findAll()).thenReturn(list);
 
         //test
         List<Facture> facList = factureService.retrieveAllFactures();
@@ -72,19 +73,18 @@ public class FactureServiceImplTest {
         Facture fac = new Facture();
         fac.setIdFacture(1L);
 
-        when(repo.findById(fac.getIdFacture())).thenReturn(Optional.of(fac));
+        Mockito.when(repo.findById(fac.getIdFacture())).thenReturn(Optional.of(fac));
 
         factureService.cancelFacture(fac.getIdFacture());
-        verify(repo).deleteById(fac.getIdFacture());
-        
+        verify(repo).deleteById(fac.getIdFacture());   
     }
     
     @Test
     public void retrieveFactureByIdTest() {
         Facture fac = new Facture();
-        fac.setIdFacture(3L);
+        fac.setIdFacture(1L);
 
-        when(repo.findById(fac.getIdFacture())).thenReturn(Optional.of(fac));
+        Mockito.when(repo.findById(fac.getIdFacture())).thenReturn(Optional.of(fac));
 
         Facture expected = factureService.retrieveFacture(fac.getIdFacture());
 
