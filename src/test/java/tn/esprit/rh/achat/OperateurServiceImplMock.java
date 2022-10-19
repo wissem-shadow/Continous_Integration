@@ -14,7 +14,7 @@ import tn.esprit.rh.achat.entities.Operateur;
 import tn.esprit.rh.achat.repositories.OperateurRepository;
 import tn.esprit.rh.achat.services.OperateurServiceImpl;
 
-import static org.assertj.core.api.Assertions.assertThat;
+
 import static org.junit.Assert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.anyLong;
