@@ -62,7 +62,7 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				<version>2.4.1</version>
+				<version>2.4.1</version><!--$NO-MVN-MAN-VER$-->
 				<configuration>
 					<excludes>
 						<exclude>
@@ -76,7 +76,7 @@
 			<plugin>
 			<groupId>org.apache.maven.plugins</groupId>
 			<artifactId>maven-resources-plugin</artifactId>
-			<version>3.1.0</version>
+			<version>3.1.0</version><!--$NO-MVN-MAN-VER$-->
 		</plugin>
 	
 		<plugin>
@@ -127,7 +127,7 @@
     <repository>
       <id>deploymentRepo</id>
       <name>admin</name>
-     <url>http://192.168.162.222:8081/repository/maven-releases/</url>
+     <url>http://192.168.162.222:8081/repository/maven-snapshots/</url>
     </repository>
   </distributionManagement>
 </project>
