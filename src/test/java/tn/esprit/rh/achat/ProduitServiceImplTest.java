@@ -34,7 +34,7 @@ public class ProduitServiceImplTest {
 
 	@Test
 	@Order(1)
-	public void testAddStock()  throws ParseException{
+	void testAddProduit()  throws ParseException{
 		List<Produit> produits = produitService.retrieveAllProduits();
 		Produit produitADD = Produit.builder().codeProduit("123").libelleProduit("lait").build();
 		int expected = produits.size();
@@ -45,7 +45,7 @@ public class ProduitServiceImplTest {
 
 	@Test
 	@Order(2)
-	public void testdeleteStock() throws ParseException {
+	void testdeleteProduit() throws ParseException {
 		Produit produitADD = Produit.builder().codeProduit("100").libelleProduit("lait").build();
 		Produit addedProduit = produitService.addProduit(produitADD);
 		produitService.deleteProduit(addedProduit.getIdProduit());
