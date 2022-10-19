@@ -52,48 +52,7 @@ Operateur operateur = new Operateur("Amine","Chibeni","123");
 
     }
 	
-	@Test
-    void RetrieveByIdOperateur() {
- 
-   	BDDMockito.given(OpRepository.findById(anyLong())).willReturn(Optional.ofNullable(operateur));
-
-   	  Operateur op = OpService.retrieveOperateur(1L);
-
-       //((List<Operateur>) assertThat(op.getIdOperateur())).contains("123");
-   }
-
-  
-   @Test
-    void testAddProduit() {
-       Mockito.when(OpRepository.save(operateur)).thenReturn(operateur);
-       Operateur op = OpService.addOperateur(operateur);
-       assertEquals(1L,op.getIdOperateur());
-           }
 	
-	
-   @Test
-   void testUpdateProduit(){
-	   Operateur input = new Operateur("Amine","Chibeni","123");
-
-      Mockito.when(OpRepository.save(input)).thenReturn(input);
- 
-      input.setNom("mohamed");
-    
-       Operateur result = OpService.updateOperateur(input);
-      assertEquals(input, result);
-  }
-   
-   
-   @Test
-   
-   void DeleteProduit(){
-
-    
-      Mockito.when(OpRepository.findById(1l));
-      doNothing().when(OpRepository).delete(operateur);
-
-      OpService.deleteOperateur(1l);;
-  }
 	
 
 }
