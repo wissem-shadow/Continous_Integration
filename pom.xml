@@ -119,6 +119,8 @@
 			</plugin>
 
 		</plugins>
+		
+		<finalName>Spring-boot-docker</finalName>
 	</build>
 	
 	
