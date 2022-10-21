@@ -102,7 +102,7 @@
 				</executions>
 			</plugin>
 		</plugins>
-		<finalName>achet-docker</finalName>
+		<finalName>achat-docker</finalName>
 	</build>
 
 	<distributionManagement>
