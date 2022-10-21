@@ -101,9 +101,8 @@
 					</execution>
 				</executions>
 			</plugin>
-
-
 		</plugins>
+		<finalName>achet-docker</finalName>
 	</build>
 
 	<distributionManagement>
