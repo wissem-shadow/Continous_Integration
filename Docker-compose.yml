@@ -1,0 +1,23 @@
+version: '3.9'
+services:
+  mysqldb:
+    image: mysql:8
+    volumes:
+      - /home/mysql/data:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: achat-db
+      
+    
+  spring_app:
+    depends_on:
+      - mysqldb
+    image: chibeniamine/spring-boot-docker
+    ports:
+      - 9090:9090
+    restart: on-failure
+    container_name: amine-achat-project
+
+volumes:
+  db_data: {}
