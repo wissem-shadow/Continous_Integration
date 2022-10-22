@@ -4,7 +4,7 @@ services:
     image: mysql:8
     volumes:
       - /home/mysql/data:/var/lib/mysql
-    restart: always
+    restart: on-failure
     environment:
       
       MYSQL_DATABASE: achat-db
