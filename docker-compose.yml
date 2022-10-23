@@ -5,8 +5,8 @@ services:
     
     restart: always
     environment:
-      
-      MYSQL_DATABASE: achat-db
+      MYSQL_USER: root
+      MYSQL_DATABASE: achatdb
       MYSQL_ALLOW_EMPTY_PASSWORD: 1
     ports:
       - 3306:3306
