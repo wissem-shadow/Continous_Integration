@@ -1,4 +1,4 @@
-
+/*
 package tn.esprit.rh.achat;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -35,6 +35,7 @@ import tn.esprit.rh.achat.services.ProduitServiceImpl;
 	ProduitServiceImpl produitService;
 	
 	Produit prod= Produit.builder().idProduit(1L).codeProduit("123").libelleProduit("lait").build();
+	
     List<Produit> listProduits= new ArrayList<Produit>() {
         {
             add(Produit.builder().codeProduit("456").libelleProduit("pomme").build());
@@ -94,3 +95,4 @@ import tn.esprit.rh.achat.services.ProduitServiceImpl;
     }
 	
 }
+*/
