@@ -5,6 +5,7 @@ services:
     image: mysql:latest
     volumes:
       - /home/mysql/data:/var/lib/mysql:rw
+    user: root
     restart: always
     ports:
       - 3308:3306
