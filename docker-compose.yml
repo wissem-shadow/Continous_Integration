@@ -20,4 +20,10 @@ services:
       - 9090:9090
     restart: on-failure
     container_name: amine-achat-project
+    environment:
+       -SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/achatdb?autoReconnect=true&failOverReadOnly=false&maxReconnects=10
+       -SPRING_DATASOURCE_USERNAME : root
+    links:
+      - mysqldb:mysqldb
+       
 
