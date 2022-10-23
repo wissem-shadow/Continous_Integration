@@ -4,6 +4,7 @@ tn\esprit\rh\achat\services\FournisseurServiceImpl.class
 tn\esprit\rh\achat\services\OperateurServiceImpl.class
 tn\esprit\rh\achat\controllers\ReglementRestController.class
 tn\esprit\rh\achat\repositories\CategorieProduitRepository.class
+tn\esprit\rh\achat\Dto\OperateurDto.class
 tn\esprit\rh\achat\entities\Produit.class
 tn\esprit\rh\achat\entities\Fournisseur.class
 tn\esprit\rh\achat\controllers\SecteurActiviteController.class
@@ -18,6 +19,7 @@ tn\esprit\rh\achat\entities\CategorieFournisseur.class
 tn\esprit\rh\achat\repositories\FournisseurRepository.class
 tn\esprit\rh\achat\controllers\FournisseurRestController.class
 tn\esprit\rh\achat\repositories\StockRepository.class
+tn\esprit\rh\achat\Dto\ProduitDto.class
 tn\esprit\rh\achat\controllers\CategorieProduitController.class
 tn\esprit\rh\achat\entities\CategorieProduit.class
 tn\esprit\rh\achat\repositories\DetailFournisseurRepository.class
