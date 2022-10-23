@@ -3,7 +3,11 @@ package tn.esprit.rh.achat.controllers;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import tn.esprit.rh.achat.Dto.DTOOperateur;
+import tn.esprit.rh.achat.Dto.DTOStock;
 import tn.esprit.rh.achat.entities.Operateur;
+import tn.esprit.rh.achat.entities.Stock;
 import tn.esprit.rh.achat.services.IOperateurService;
 
 import java.util.List;
@@ -31,8 +35,9 @@ public class OperateurController {
 
 	@PostMapping("/add-operateur")
 	@ResponseBody
-	public Operateur addOperateur(@RequestBody Operateur op) {
-		return operateurService.addOperateur(op);
+	public Operateur addOperateur(@RequestBody DTOOperateur s) {
+		Operateur stock = new Operateur(s.getNom(),s.getPrenom(),s.getPassword(),s.getFactures());
+		return operateurService.addOperateur(stock);
 	}
 
 	@DeleteMapping("/remove-operateur/{operateur-id}")
@@ -43,8 +48,9 @@ public class OperateurController {
 
 	@PutMapping("/modify-operateur")
 	@ResponseBody
-	public Operateur modifyOperateur(@RequestBody Operateur operateur) {
-		return operateurService.updateOperateur(operateur);
+	public Operateur modifyStock(@RequestBody DTOOperateur o) {
+		Operateur op = new Operateur(o.getNom(),o.getPrenom(),o.getPassword(),o.getFactures());
+		return operateurService.updateOperateur(op);
 	}
 
 	

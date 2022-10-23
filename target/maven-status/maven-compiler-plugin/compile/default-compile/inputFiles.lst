@@ -42,6 +42,7 @@ C:\Users\ASUS\Documents\GitHub\Continous_Integration\src\main\java\tn\esprit\rh\
 C:\Users\ASUS\Documents\GitHub\Continous_Integration\src\main\java\tn\esprit\rh\achat\controllers\SecteurActiviteController.java
 C:\Users\ASUS\Documents\GitHub\Continous_Integration\src\main\java\tn\esprit\rh\achat\util\SpringFoxSwaggerConfig.java
 C:\Users\ASUS\Documents\GitHub\Continous_Integration\src\main\java\tn\esprit\rh\achat\services\IFactureService.java
+C:\Users\ASUS\Documents\GitHub\Continous_Integration\src\main\java\tn\esprit\rh\achat\Dto\StockDto.java
 C:\Users\ASUS\Documents\GitHub\Continous_Integration\src\main\java\tn\esprit\rh\achat\services\FournisseurServiceImpl.java
 C:\Users\ASUS\Documents\GitHub\Continous_Integration\src\main\java\tn\esprit\rh\achat\repositories\SecteurActiviteRepository.java
 C:\Users\ASUS\Documents\GitHub\Continous_Integration\src\main\java\tn\esprit\rh\achat\services\FactureServiceImpl.java

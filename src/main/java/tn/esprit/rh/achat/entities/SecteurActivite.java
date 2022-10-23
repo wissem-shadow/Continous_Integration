@@ -31,4 +31,12 @@ public class SecteurActivite implements Serializable{
 	@ManyToMany(mappedBy="secteurActivites")
 	@JsonIgnore
 	private Set<Fournisseur> fournisseurs;
+	
+	
+	public SecteurActivite(String codeSecteurActivite, String libelleSecteurActivite,Set<Fournisseur> fournisseurs) {
+        super();
+        this.codeSecteurActivite = codeSecteurActivite;
+        this.libelleSecteurActivite = libelleSecteurActivite;
+        this.fournisseurs = fournisseurs;
+    }
 }

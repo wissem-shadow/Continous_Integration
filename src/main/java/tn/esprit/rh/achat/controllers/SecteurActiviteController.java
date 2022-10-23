@@ -3,7 +3,11 @@ package tn.esprit.rh.achat.controllers;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import tn.esprit.rh.achat.Dto.DTOSecteurActivite;
+import tn.esprit.rh.achat.Dto.DTOStock;
 import tn.esprit.rh.achat.entities.SecteurActivite;
+import tn.esprit.rh.achat.entities.Stock;
 import tn.esprit.rh.achat.services.ISecteurActiviteService;
 
 import java.util.List;
@@ -31,9 +35,9 @@ public class SecteurActiviteController {
 
 	@PostMapping("/add-secteurActivite")
 	@ResponseBody
-	public SecteurActivite addSecteurActivite(@RequestBody SecteurActivite sa) {
-		
-		return secteurActiviteService.addSecteurActivite(sa);
+	public SecteurActivite addSecteurActivite(@RequestBody DTOSecteurActivite s) {
+		SecteurActivite stact= new SecteurActivite(s.getCodeSecteurActivite(),s.getLibelleSecteurActivite(),s.getFournisseurs());
+		return secteurActiviteService.addSecteurActivite(stact);
 	}
 
 	@DeleteMapping("/remove-secteurActivite/{secteurActivite-id}")
@@ -44,9 +48,9 @@ public class SecteurActiviteController {
 
 	@PutMapping("/modify-secteurActivite")
 	@ResponseBody
-	public SecteurActivite modifySecteurActivite(@RequestBody SecteurActivite secteurActivite) {
-		return secteurActiviteService.updateSecteurActivite(secteurActivite);
+	public SecteurActivite modifySecteurActivite(@RequestBody DTOSecteurActivite s) {
+		SecteurActivite stact= new SecteurActivite(s.getCodeSecteurActivite(),s.getLibelleSecteurActivite(),s.getFournisseurs());
+		return secteurActiviteService.updateSecteurActivite(stact);
 	}
-
 	
 }
