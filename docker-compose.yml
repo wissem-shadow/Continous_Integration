@@ -4,7 +4,7 @@ services:
     container_name: mysqldb
     image: mysql:latest
     volumes:
-      - mysql_data_container:/var/lib/mysql:rw
+      - mysql_container:/var/lib/mysql:rw
     user: root
     restart: always
     ports:
@@ -24,5 +24,6 @@ services:
       - 8089:8089
     restart: always
     container_name: wissem-achat-project
-
+volumes:
+  mysql_container: { }
 
