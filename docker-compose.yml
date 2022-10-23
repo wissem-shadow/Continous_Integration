@@ -10,7 +10,7 @@ services:
     environment:
 
        MYSQL_DATABASE: achat-db
-       MYSQL_ALLOW_EMPTY_PASSWORD: true
+       MYSQL_ALLOW_EMPTY_PASSWORD: 1
 
 
   spring_app:
