@@ -17,7 +17,7 @@ services:
       - mysqldb
     image: chibeniamine/spring-boot-docker
     ports:
-      - 9090:9090
+      - 8089:9090
     restart: on-failure
     container_name: amine-achat-project
     environment:
