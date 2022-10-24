@@ -13,6 +13,8 @@ services:
     image: riadhmars/test-achat
     ports:
       - 8089:8089
+    volumes:
+      - mysql-data:/var/lib/mysql
     restart: unless-stopped
     environment :
       -SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/achatdb?autoReconnect=true&failOverReadOnly=false&maxReconnects=10
@@ -22,3 +24,5 @@ services:
       - mysqldb
     links:
       - mysqldb:mysqldb
+volumes:
+  mysql-data:
