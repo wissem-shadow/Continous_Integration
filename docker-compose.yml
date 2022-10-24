@@ -2,8 +2,7 @@ version: '3.3'
 services:
   mysqldb:
     image: mysql:8
-    volumes:
-      - mysql_container:/var/lib/mysql:rw
+    
     restart: always
     environment:
       MYSQL_USER: root
@@ -22,8 +21,7 @@ services:
     restart: always
     container_name: amine-achat-project
     
-    volumes:
-       mysql_container:{ }
+    
     
        
 
