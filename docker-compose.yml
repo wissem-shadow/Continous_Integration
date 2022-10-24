@@ -2,7 +2,8 @@ version: '3.3'
 services:
   mysqldb:
     image: mysql:8
-    
+    volumes:
+      - mysql_container:/var/lib/mysql:rw
     restart: always
     environment:
       MYSQL_USER: root
@@ -17,13 +18,12 @@ services:
       - mysqldb
     image: chibeniamine/spring-boot-docker
     ports:
-      - 8089:9090
-    restart: on-failure
+      - 8089:8089
+    restart: always
     container_name: amine-achat-project
-    environment:
-       -SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/achatdb?createDatabaseIfNotExist=true&autoReconnect=true&failOverReadOnly=false&maxReconnects=10
-       -SPRING_DATASOURCE_USERNAME : root
-    links:
-      - mysqldb:mysqldb
+    
+    volumes:
+       mysql_container:{ }
+    
        
 
