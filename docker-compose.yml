@@ -1,4 +1,4 @@
-version: "3"
+version: "3.4"
 services:
   mysqldb:
     image: mysql:latest
@@ -7,14 +7,13 @@ services:
       - MYSQL_DATABASE=achatdb
       - MYSQL_PASSWORD=root
     ports:
-      - 3306:3306
-
-  achatproject:
+      - '3306:3306'
+    volumes:
+      - db_vol:/var/lib/mysql:rw
+  backend:
     image: riadhmars/test-achat
     ports:
-      - 8089:8089
-    volumes:
-      - mysql-data:/var/lib/mysql
+      - '8089:8089'
     restart: unless-stopped
     environment :
       -SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/achatdb?autoReconnect=true&failOverReadOnly=false&maxReconnects=10
@@ -22,7 +21,11 @@ services:
       -SPRING_DATASOURCE_PASSWORD : root
     depends_on:
       - mysqldb
-    links:
-      - mysqldb:mysqldb
+  frontapp:
+    image: riadhmars/achatfront
+    ports:
+      - '4200:80'
+    depends_on:
+      - backend
 volumes:
-  mysql-data:
+     db_vol: { }
