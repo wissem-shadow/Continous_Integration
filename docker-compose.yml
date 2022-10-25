@@ -27,7 +27,7 @@ services:
   front_app:
     depends_on:
       - spring_app
-    image: wissemesprit/achat-front
+    image: wissemesprit/achat-front-v2
     ports:
       - 4200:4200
     restart: always
