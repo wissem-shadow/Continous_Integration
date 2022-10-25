@@ -25,3 +25,9 @@ services:
       - mysql-standalone
     links:
       - mysql-standalone:mysql-standalone
+  frontend:
+    image: tybahmed/angular:angular 
+    ports: 
+      - 4200:4200
+    depends_on:
+      - achatproject   
