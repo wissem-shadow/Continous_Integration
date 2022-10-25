@@ -25,9 +25,11 @@ services:
 
 
   angular_app:
+    depends_on:
+      - spring_app
     image: chibeniamine/amine-achat-front
     ports:
-      - 4200:80
+      - 4200:4200
     container_name: angular-achat-front
     depends_on:
       -  spring_app
