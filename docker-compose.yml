@@ -26,7 +26,7 @@ services:
     links:
       - mysql-standalone:mysql-standalone
   frontend:
-    image: tybahmed/angular:angular 
+    image: tybahmed/angular1:latest 
     ports: 
       - 4200:4200
     depends_on:
