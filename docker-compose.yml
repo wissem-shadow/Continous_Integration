@@ -22,11 +22,11 @@ services:
     ports:
       - 8089:8089
     restart: always
-    container_name: wissem-achat-project
+    container_name: spring_app
 
   front_app:
     depends_on:
-      - wissem-achat-project
+      - spring_app
     image: wissemesprit/achat-front
     ports:
       - 4200:4200
