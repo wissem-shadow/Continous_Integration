@@ -27,9 +27,9 @@ services:
   front_app:
     depends_on:
       - spring_app
-    image: wissemesprit/achat-front-v2
+    image: wissemesprit/achat-front
     ports:
-      - 4200:4200
+      - 4200:80
     restart: always
     container_name: front-container
 volumes:
