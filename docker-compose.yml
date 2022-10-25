@@ -28,8 +28,8 @@ services:
     image: chibeniamine/amine-achat-front
     ports:
       - 4200:80
-    container_name : angular-achat-front
-    links:
+    container_name: angular-achat-front
+    depends_on:
       -  spring_app
     
     
