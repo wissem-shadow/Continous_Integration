@@ -22,6 +22,15 @@ services:
     container_name: amine-achat-project
     environment:
       -SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/achatdb?createDatabaseIfNotExist=true&autoReconnect=true&failOverReadOnly=false&maxReconnects=10
+
+
+  angular_app:
+    image: chibeniamine/amine-achat-front
+    ports:
+      - 4200:80
+    container_name : angular-achat-front
+    links:
+      -  spring_app
     
     
     
