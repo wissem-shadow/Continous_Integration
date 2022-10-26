@@ -9,7 +9,7 @@ services:
       MYSQL_DATABASE: achatdb
       MYSQL_ALLOW_EMPTY_PASSWORD: 1
     ports:
-      - 3306:3306
+      - 3305:3305
       
     
   spring_app:
