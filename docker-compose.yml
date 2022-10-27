@@ -14,6 +14,8 @@ services:
     ports:
       - '8089:8089'
     restart: unless-stopped
+    environment :
+      -SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/achatdb?autoReconnect=true&failOverReadOnly=false&maxReconnects=10
     depends_on:
       - mysqldb
   frontapp:
