@@ -15,7 +15,7 @@ services:
       - '8089:8089'
     restart: unless-stopped
     environment :
-      -SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/achatdb?autoReconnect=true&failOverReadOnly=false&maxReconnects=10
+      -SPRING_DATASOURCE_URL: jdbc:mysql://localhost:3306/achatdb?createDatabaseIfNotExist=true
     depends_on:
       - mysqldb
   frontapp:
